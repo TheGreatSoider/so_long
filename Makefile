@@ -13,58 +13,54 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Imlx
 
-SRCS = so_long.c
+MLX = mlx/libmlx.a
+MLXFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-SRCS_PREFIXED = $(addprefix srcs/, $(SRCS))
-# BONUS_SRCS_PREFIXED = $(addprefix bonus/srcs/, $(BONUS_SRCS))
+SRCS = so_long.c \
+		check_map.c \
+		check_state.c \
+		display.c \
+		exit.c \
+		floodfill.c \
+		getdata.c \
+		hook.c \
+		init.c \
+		movement.c \
 
-OBJS_DIR = objs/
-OBJS_M = $(SRCS:.c=.o)
-OBJS_M_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS_M))
+SRCS       		=     	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRCS_FILES)))
+OBJS        	=     	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
+SRCS_DIR    	=    	srcs/
+LIBFT_DIR    	=    	libft/
+OBJS_DIR    	=    	objs/
 
-LIBFT_DIR = Libft/
-LIBFT_LIB = libft.a
+all:            
+						mkdir -p $(OBJS_DIR)
+						make libft
+						make $(NAME)
 
-#text color
-COLOR_OFF =\033[0m
-RED =\033[0;31m
-GREEN=\033[0;32m
-YELLOW=\033[0;33m
-CYAN=\033[0;36m
+bonus:
+						mkdir -p $(OBJS_DIR)
+						make $(NAME)
 
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@
 
-all : $(NAME)
+$(NAME):        $(OBJS)
+				$(CC) $(CFLAGS) $(LIBFT) $(MLX) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
-$(LIBFT_LIB) :
-	@make bonus -C $(LIBFT_DIR)
+libft:
+				make -C $(LIBFT_DIR)
 
-$(OBJS_DIR)%.o : %.c
-	@mkdir -p $(OBJS_DIR)
-	@(CC) (CFLAGS) -I. -c $< -o $@
+clean:
+				rm -rf $(OBJS_DIR)
+				make clean -C $(LIBFT_DIR)
 
-$(NAME) : $(LIBFT_LIB) 
-	@$(CC) $(CFLAGS) -Iincludes $(SRCS_PREFIXED) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
-	@echo "$(GREEN)so_long.exe Done!$(COLOR_OFF)"
+fclean:            clean
+				make fclean -C $(LIBFT_DIR)
+				rm -rf $(NAME)
 
-bonus: $(LIBFT_LIB)
-	@$(CC) $(CFLAGS) -Ibonus/includes $(BONUS_SRCS_PREFIXED) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
-	@echo "$(GREEN)(bonus) so_long.exe Done!$(COLOR_OFF)"
+re:                fclean all
 
-clean :
-	@rm -rf $(OBJS_DIR)
-	@echo "$(RED)Removed : obj files ($(NAME))$(COLOR_OFF)"
-	@make clean -C $(LIBFT_DIR)
-
-fclean: clean
-	@rm -rf $(NAME)
-	@echo "$(RED)Removed : $(NAME).exe$(COLOR_OFF)"
-	@rm -rf libft/libft.a
-	@echo "$(RED)Removed : libft.a$(COLOR_OFF)"
-	@rm -rf libft/ft_printf/libftprintf.a
-	@echo "$(RED)Removed : libftprinf.a$(COLOR_OFF)"
-
-re : fclean all
-
-.PHONY : all bonus clean fclean re
+.PHONY:            all bonus libft clean fclean re
