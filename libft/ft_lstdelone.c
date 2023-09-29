@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 15:58:08 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:52:49 by cocheong         ###   ########.fr       */
+/*   Created: 2022/08/20 22:45:50 by cocheong          #+#    #+#             */
+/*   Updated: 2022/08/25 04:25:23 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_prg	prg;
-
-	init_game(&prg);
-	check_map(&prg, ac, av);
-	init_window(&prg);
-	loop_game(&prg);
-	return (exit_success());
+	if (lst == NULL)
+		return ;
+	del(lst->content);
+	free(lst);
 }

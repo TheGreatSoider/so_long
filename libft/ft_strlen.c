@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 15:58:08 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:52:49 by cocheong         ###   ########.fr       */
+/*   Created: 2022/07/05 13:35:52 by cocheong          #+#    #+#             */
+/*   Updated: 2022/08/15 20:52:13 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlen(const char *s)
 {
-	t_prg	prg;
+	int	i;
 
-	init_game(&prg);
-	check_map(&prg, ac, av);
-	init_window(&prg);
-	loop_game(&prg);
-	return (exit_success());
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

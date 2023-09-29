@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 15:58:08 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:52:49 by cocheong         ###   ########.fr       */
+/*   Created: 2022/07/12 15:49:15 by cocheong          #+#    #+#             */
+/*   Updated: 2022/08/15 20:52:13 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isalnum(int c)
 {
-	t_prg	prg;
-
-	init_game(&prg);
-	check_map(&prg, ac, av);
-	init_window(&prg);
-	loop_game(&prg);
-	return (exit_success());
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90)
+		|| (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }

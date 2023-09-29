@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 15:58:08 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:52:49 by cocheong         ###   ########.fr       */
+/*   Created: 2022/08/05 14:41:37 by cocheong          #+#    #+#             */
+/*   Updated: 2022/08/15 21:07:28 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memmove(void *dest, void const *src, size_t n)
 {
-	t_prg	prg;
+	char	*d;
+	char	*s;
 
-	init_game(&prg);
-	check_map(&prg, ac, av);
-	init_window(&prg);
-	loop_game(&prg);
-	return (exit_success());
+	d = (char *)dest;
+	s = (char *)src;
+	if (dest == src)
+		return (dest);
+	if (s < d)
+	{
+		while (n--)
+			*(d + n) = *(s + n);
+		return (dest);
+	}
+	while (n--)
+		*d++ = *s++;
+	return (dest);
 }

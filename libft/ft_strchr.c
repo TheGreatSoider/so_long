@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 15:58:08 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:52:49 by cocheong         ###   ########.fr       */
+/*   Created: 2022/07/12 16:13:52 by cocheong          #+#    #+#             */
+/*   Updated: 2022/08/25 14:05:56 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strchr(const char *str, int c)
 {
-	t_prg	prg;
+	int	i;
 
-	init_game(&prg);
-	check_map(&prg, ac, av);
-	init_window(&prg);
-	loop_game(&prg);
-	return (exit_success());
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == (char)c)
+		{
+			return ((char *)(str + i));
+		}
+		i++;
+	}
+	if (str[i] == (char)c)
+		return ((char *)(str + i));
+	return (NULL);
 }

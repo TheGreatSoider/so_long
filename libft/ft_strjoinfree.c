@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_state.c                                      :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 06:06:26 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:11:31 by cocheong         ###   ########.fr       */
+/*   Created: 2022/08/20 22:11:50 by cocheong          #+#    #+#             */
+/*   Updated: 2023/09/30 00:34:59 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	check_state(t_prg *prg)
+char	*ft_strjoinfree(char *s1, const char *s2)
 {
-	if (prg->map.map[prg->ply.pos.y][prg->ply.pos.x] == 'C')
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	i = 0;
+	j = 0;
+	if (!str)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		prg->map.map[prg->ply.pos.y][prg->ply.pos.x] = 'F';
-		prg->ply.col++;
+		str[i] = s1[i];
+		i++;
 	}
-	if (prg->map.map[prg->ply.pos.y][prg->ply.pos.x] == 'E')
+	while (s2[j] != '\0')
 	{
-		if (prg->ply.col == prg->map.max_col)
-			victory();
+		str[i] = s2[j];
+		i++;
+		j++;
 	}
+	str[i] = '\0';
+	free(s1);
+	return (str);
 }

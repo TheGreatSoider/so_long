@@ -6,11 +6,11 @@
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 05:55:27 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/26 05:55:27 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:54:54 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	flood_fill(char **tab, t_vec size, t_vec cur)
 {
@@ -44,7 +44,7 @@ void	check_valid_path(t_prg *prg)
 		x = -1;
 		while (++x < prg->map.size.x)
 			if (ft_strchr("CEPN", temp_map[x][y]))
-				exit_fail("No valid path");
+				error_exit("No valid path");
 	}
 	y = -1;
 	while (++y < prg->map.size.y)

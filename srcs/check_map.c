@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 04:01:01 by cocheong          #+#    #+#             */
-/*   Updated: 2023/08/29 04:01:01 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:49:34 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	check_walls(t_prg *prg)
 {
@@ -36,7 +36,7 @@ char	*check_line(t_prg *prg, char *str, char *map_str, int fd)
 {
 	while (str != NULL)
 	{
-		map_str = ft_strjoin_free(map_str, str);
+		map_str = ft_strjoinfree(map_str, str);
 		prg->map.size.y++;
 		free(str);
 		str = get_next_line(fd);
@@ -50,7 +50,7 @@ char	*check_line(t_prg *prg, char *str, char *map_str, int fd)
 	return (map_str);
 }
 
-void	*check_each_line(t_prg *prg, char *path)
+void	check_each_line(t_prg *prg, char *path)
 {
 	char	*str;
 	int		fd;
@@ -72,7 +72,7 @@ void	*check_each_line(t_prg *prg, char *path)
 void	check_map(t_prg *prg, int ac, char **av)
 {
 	if (ac != 2)
-		error_exit("No path to map");
+		error_exit("No map to map");
 	if (ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".ber", 4) != 0)
 		error_exit("Invalid map extension");
 	check_each_line(prg, av[1]);

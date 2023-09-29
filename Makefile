@@ -6,29 +6,28 @@
 #    By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:46:37 by cocheong          #+#    #+#              #
-#    Updated: 2022/11/30 14:46:37 by cocheong         ###   ########.fr        #
+#    Updated: 2023/09/30 00:54:33 by cocheong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Imlx
-
-MLX = mlx/libmlx.a
-MLXFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
-
-SRCS = so_long.c \
-		check_map.c \
-		check_state.c \
-		display.c \
-		exit.c \
-		floodfill.c \
-		getdata.c \
-		hook.c \
-		init.c \
-		movement.c \
-
+NAME        	=   	so_long
+LIBFT        	=    	libft/libft.a
+MLX            	=    	mlx/libmlx.a
+CC            	=    	gcc
+RM            	=    	rm -f
+CFLAGS       	=    	-Wall -Wextra -Werror -Imlx
+MLXFLAGS   		=    	-L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+SRCS_FILES    	=   	check_map \
+						check_state \
+						display \
+						exit \
+						floodfill \
+						getdata \
+						hook \
+						init \
+						movement \
+						onscreensteps \
+						so_long
 SRCS       		=     	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRCS_FILES)))
 OBJS        	=     	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
 SRCS_DIR    	=    	srcs/

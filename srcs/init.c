@@ -6,11 +6,11 @@
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 06:08:56 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/26 06:08:56 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:20:49 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	init_sprites(t_prg *prg)
 {

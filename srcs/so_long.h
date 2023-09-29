@@ -6,7 +6,7 @@
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:01:53 by cocheong          #+#    #+#             */
-/*   Updated: 2023/08/17 17:01:53 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:54:10 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-// # include "../libft/get_next_line.h"
-// # include "../libft/ft_printf.h"
+# include "../libft/get_next_line/get_next_line.h"
+# include "../libft/ft_printf/includes/ft_printf.h"
 # include <mlx.h>
 
 # define KEY_ESC		53
@@ -89,6 +89,7 @@ typedef struct s_prg
 void	init_game(t_prg *prg);
 void	init_sprites(t_prg *prg);
 void	init_mlx(t_prg *prg);
+void	init_window(t_prg *prg);
 void	loop_game(t_prg *prg);
 int		user_input(int keycode, t_prg *prg);
 void	check_map(t_prg *prg, int ac, char **av);
@@ -96,6 +97,7 @@ void	check_valid_path(t_prg *prg);
 void	get_data(t_prg *prg);
 void	check_each_line(t_prg *prg, char *path);
 void	display_image(t_prg *prg);
+void	onscreensteps(t_prg *prg);
 int		check_enemy(t_prg *prg);
 void	check_state(t_prg *prg);
 int		exit_success(void);

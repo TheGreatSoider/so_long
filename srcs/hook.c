@@ -6,11 +6,11 @@
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 05:25:12 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/26 05:25:12 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:56:47 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 int	user_update(t_prg *prg)
 {
@@ -19,7 +19,8 @@ int	user_update(t_prg *prg)
 	display_image(prg);
 	if (prg->win.fps > FPS)
 		prg->win.fps = 0;
-	check_status(prg);
+	check_state(prg);
+	return (0);
 }
 
 int	windowexit(void)

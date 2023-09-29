@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readlayout.c                                       :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:58:00 by cocheong          #+#    #+#             */
-/*   Updated: 2023/08/09 15:58:00 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:51:21 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	display(t_prg *prg)
 {
@@ -80,9 +80,9 @@ int	check_enemy(t_prg *prg)
 
 void	display_image(t_prg *prg)
 {
-	sl_map_projection(prg);
-	sl_player_ani(prg);
-	if (sl_check_enemy(prg))
-		sl_enemy_ani(prg);
-	sl_on_screen_steps(prg);
+	display(prg);
+	player_ani(prg);
+	if (check_enemy(prg))
+		enemy_ani(prg);
+	onscreensteps(prg);
 }

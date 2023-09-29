@@ -6,11 +6,11 @@
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:20:48 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/24 15:20:48 by cocheong         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:20:20 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 int	error_exit(char *error)
 {

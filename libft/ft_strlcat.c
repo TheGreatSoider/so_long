@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cocheong <cocheong@student.42kl.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 15:58:08 by cocheong          #+#    #+#             */
-/*   Updated: 2023/09/30 00:52:49 by cocheong         ###   ########.fr       */
+/*   Created: 2022/08/05 14:43:28 by cocheong          #+#    #+#             */
+/*   Updated: 2022/08/25 05:00:23 by cocheong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_prg	prg;
+	size_t	i;
+	size_t	j;
+	size_t	d;
+	size_t	s;
 
-	init_game(&prg);
-	check_map(&prg, ac, av);
-	init_window(&prg);
-	loop_game(&prg);
-	return (exit_success());
+	i = ft_strlen(dest);
+	j = 0;
+	d = ft_strlen(dest);
+	s = ft_strlen(src);
+	if (size < 1)
+		return (s + size);
+	while (src[j] != '\0' && i < size - 1)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	if (size < d)
+		return (s + size);
+	else
+		return (s + d);
 }
